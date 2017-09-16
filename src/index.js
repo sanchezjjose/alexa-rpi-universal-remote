@@ -19,13 +19,13 @@ const handlers = {
     'GetStatusIntent': () => {
         console.log('Called GetStatusIntent');
 
-        return handleRequest(SERVER_URL + '/status').bind(this);
+        return handleRequest(SERVER_URL + '/status', this);
     },
 
     'TurnOffIntent': () => {
         console.log('Called TurnOffIntent');
 
-        return handleRequest(SERVER_URL + '/off').bind(this);
+        return handleRequest(SERVER_URL + '/off', this);
     },
     
     'TurnOnIntent': () => {
@@ -39,7 +39,7 @@ const handlers = {
         const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
         const requestUrl = SERVER_URL + '/on' + query;
         
-        return handleRequest(requestUrl).bind(this);
+        return handleRequest(requestUrl, this);
     },
 
     'SetTemperatureIntent': () => {
@@ -53,20 +53,20 @@ const handlers = {
         const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
         const requestUrl = SERVER_URL + '/set' + query;
         
-        return handleRequest(requestUrl).bind(this);
+        return handleRequest(requestUrl, this);
     }
 };
 
-function handleRequest (url) {
+function handleRequest (url, context) {
     return request(url, (error, response, body) => {
         console.log(body);
     
         if (!error && response.statusCode === 200) {
-            this.emit(':tell', body);
+            context.emit(':tell', body);
 
         } else {
             console.log('Request error: ', err);
-            this.emit(':tell', 'Something went wrong. Please try again later.');
+            context.emit(':tell', 'Something went wrong. Please try again later.');
         }
     });
 };
