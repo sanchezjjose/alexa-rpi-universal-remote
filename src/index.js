@@ -26,7 +26,7 @@ const handlers = {
         console.log('Called TurnOffIntent');
 
         return handleRequest(SERVER_URL + '/off').bind(this);
-    }
+    },
     
     'TurnOnIntent': () => {
         console.log('Called TurnOnIntent');
