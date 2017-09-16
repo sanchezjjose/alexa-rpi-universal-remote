@@ -13,6 +13,22 @@
       "samples": []
     },
     {
+      "name": "GetStatusIntent",
+      "samples": [
+        "What are the AC settings",
+        "What are the settings",
+        "What is the temperature",
+        "What are the current settings",
+        "What is the status",
+        "What is the current status",
+        "What is the current state",
+        "For the current status",
+        "For the current settings",
+        "For the current state"
+      ],
+      "slots": []
+    },
+    {
       "name": "SetTemperatureIntent",
       "samples": [
         "Put {mode} on",
