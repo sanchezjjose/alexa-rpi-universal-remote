@@ -58,7 +58,7 @@ const handlers = {
 };
 
 function handleRequest (url) {
-    return request(requestUrl, (error, response, body) => {
+    return request(url, (error, response, body) => {
         console.log(body);
     
         if (!error && response.statusCode === 200) {
