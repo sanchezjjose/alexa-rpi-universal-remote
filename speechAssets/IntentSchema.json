@@ -1,0 +1,179 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "TurnOffIntent",
+      "samples": [
+        "Turn off air conditioner",
+        "Turn off AC",
+        "Turn off heat",
+        "Turn off unit",
+        "Turn off"
+      ],
+      "slots": []
+    },
+    {
+      "name": "SetTemperatureIntent",
+      "samples": [
+        "Put the AC on {mode}",
+        "Put the AC on {mode} {speed}",
+        "Put the AC on {mode} at {temperature} degrees",
+        "Put the AC on {speed} {mode}",
+        "Put the AC on {speed} {mode} at {temperature} degrees",
+        "Set the AC to {mode}",
+        "Set to {mode}",
+        "Set to {speed}",
+        "Set to {temperature} degrees",
+        "Set to {mode} on {speed}",
+        "Set to {mode} on {speed} at {temperature} degrees",
+        "Set to {speed} {mode}",
+        "Set to {speed} {mode} at {temperature} degrees",
+        "Set the mode to {mode}",
+        "Set the temperature to {temperature}",
+        "Set the speed to {speed}",
+        "Set the AC to {mode} at {temperature} degrees",
+        "Set the AC to {mode} at {temperature} on {speed}",
+        "Set the AC to {mode} to {temperature} degrees on {speed}",
+        "Set the AC to {mode} on {speed}",
+        "Set the AC to {mode} on {speed} at {temperature} degrees",
+        "Set the AC on {mode} {speed}",
+        "Set the AC on {mode} at {temperature} degrees",
+        "Set the AC on {speed} {mode}",
+        "Set the AC on {speed} {mode} at {temperature} degrees"
+      ],
+      "slots": [
+        {
+          "name": "temperature",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        },
+        {
+          "name": "mode",
+          "type": "MODE",
+          "samples": []
+        },
+        {
+          "name": "speed",
+          "type": "FAN_SPEED",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "TurnOnIntent",
+      "samples": [
+        "Turn on the Air Conditioner",
+        "Turn on the AC",
+        "Turn the Air Conditioner on",
+        "Turn the AC on",
+        "Turn the AC on at {temperature} degrees",
+        "Turn the AC on {mode} at {temperature} degrees",
+        "Turn the AC on {mode} {speed} at {temperature} degrees",
+        "Turn the AC on {speed} {mode} at {temperature} degrees"
+      ],
+      "slots": [
+        {
+          "name": "temperature",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        },
+        {
+          "name": "mode",
+          "type": "MODE",
+          "samples": []
+        },
+        {
+          "name": "speed",
+          "type": "FAN_SPEED",
+          "samples": []
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "FAN_SPEED",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "auto",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "high",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "medium",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "low",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "quiet",
+            "synonyms": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "MODE",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "dry",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "cool",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "heat",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "fan",
+            "synonyms": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,2 +1,2 @@
 # alexa-rpi-universal-remote
-An AWS lambda hosted alexa skill to manage a home universal control on raspberry pi.
+An alexa skill for controlling universal remotes from my home raspberry pi.
