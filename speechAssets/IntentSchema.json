@@ -13,17 +13,6 @@
       "samples": []
     },
     {
-      "name": "TurnOffIntent",
-      "samples": [
-        "Turn off air conditioner",
-        "Turn off AC",
-        "Turn off heat",
-        "Turn off unit",
-        "Turn off"
-      ],
-      "slots": []
-    },
-    {
       "name": "SetTemperatureIntent",
       "samples": [
         "Put {mode} on",
@@ -74,7 +63,7 @@
       "slots": [
         {
           "name": "temperature",
-          "type": "AMAZON.NUMBER",
+          "type": "TEMPERATURE",
           "samples": []
         },
         {
@@ -88,6 +77,17 @@
           "samples": []
         }
       ]
+    },
+    {
+      "name": "TurnOffIntent",
+      "samples": [
+        "Turn off air conditioner",
+        "Turn off AC",
+        "Turn off heat",
+        "Turn off unit",
+        "Turn off"
+      ],
+      "slots": []
     },
     {
       "name": "TurnOnIntent",
@@ -106,7 +106,7 @@
       "slots": [
         {
           "name": "temperature",
-          "type": "AMAZON.NUMBER",
+          "type": "TEMPERATURE",
           "samples": []
         },
         {
@@ -191,6 +191,116 @@
           "id": null,
           "name": {
             "value": "fan",
+            "synonyms": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "TEMPERATURE",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "60",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "62",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "64",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "66",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "68",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "70",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "72",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "74",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "76",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "78",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "80",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "82",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "84",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "86",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "88",
             "synonyms": []
           }
         }
