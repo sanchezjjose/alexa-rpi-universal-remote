@@ -26,6 +26,14 @@
     {
       "name": "SetTemperatureIntent",
       "samples": [
+        "Put {mode} on",
+        "Put the {mode}",
+        "Put the {mode} {speed}",
+        "Put the {mode} {speed} at {temperature} degrees",
+        "Put the {mode} at {temperature} degrees",
+        "Put the {mode} at {temperature} degrees on {speed}",
+        "Put the {mode} on {speed}",
+        "Put the {mode} on {speed} at {temperature} degrees",
         "Put the AC on {mode}",
         "Put the AC on {mode} {speed}",
         "Put the AC on {mode} at {temperature} degrees",
@@ -40,7 +48,7 @@
         "Set to {speed} {mode}",
         "Set to {speed} {mode} at {temperature} degrees",
         "Set the mode to {mode}",
-        "Set the temperature to {temperature}",
+        "Set the temperature to {temperature} degrees",
         "Set the speed to {speed}",
         "Set the AC to {mode} at {temperature} degrees",
         "Set the AC to {mode} at {temperature} on {speed}",
@@ -50,7 +58,18 @@
         "Set the AC on {mode} {speed}",
         "Set the AC on {mode} at {temperature} degrees",
         "Set the AC on {speed} {mode}",
-        "Set the AC on {speed} {mode} at {temperature} degrees"
+        "Set the AC on {speed} {mode} at {temperature} degrees",
+        "Set the {mode}",
+        "Set the {mode} {speed}",
+        "Set the {mode} {speed} at {temperature} degrees",
+        "Set the {mode} at {temperature} degrees",
+        "Set the {mode} at {temperature} degrees on {speed}",
+        "Set the {mode} on {speed}",
+        "Set the {mode} on {speed} at {temperature} degrees",
+        "Change the temperature to {temperature} degrees",
+        "Change the speed to {speed}",
+        "Switch the temperature to {temperature} degrees",
+        "Switch the speed to {speed} degrees"
       ],
       "slots": [
         {
@@ -80,7 +99,9 @@
         "Turn the AC on at {temperature} degrees",
         "Turn the AC on {mode} at {temperature} degrees",
         "Turn the AC on {mode} {speed} at {temperature} degrees",
-        "Turn the AC on {speed} {mode} at {temperature} degrees"
+        "Turn the AC on {speed} {mode} at {temperature} degrees",
+        "Turn the {mode} on",
+        "Turn on {mode} mode"
       ],
       "slots": [
         {
