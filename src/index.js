@@ -16,19 +16,17 @@ exports.handler = (event, context, callback) => {
 
 const handlers = {
 
-    'GetStatusIntent': () => {
+    'GetStatusIntent': function () {
         console.log('Called GetStatusIntent');
-
-        return handleRequest(SERVER_URL + '/status', this);
+        handleRequest.call(this, SERVER_URL + '/status');
     },
 
-    'TurnOffIntent': () => {
+    'TurnOffIntent': function () {
         console.log('Called TurnOffIntent');
-
-        return handleRequest(SERVER_URL + '/off', this);
+        handleRequest.call(this, SERVER_URL + '/off');
     },
     
-    'TurnOnIntent': () => {
+    'TurnOnIntent': function () {
         console.log('Called TurnOnIntent');
 
         const slots = this.event.request.intent.slots;
@@ -39,10 +37,10 @@ const handlers = {
         const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
         const requestUrl = SERVER_URL + '/on' + query;
         
-        return handleRequest(requestUrl, this);
+        handleRequest.call(this, requestUrl);
     },
 
-    'SetTemperatureIntent': () => {
+    'SetTemperatureIntent': function () {
         console.log('Called SetTemperatureIntent');
 
         const slots = this.event.request.intent.slots;
@@ -53,20 +51,20 @@ const handlers = {
         const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
         const requestUrl = SERVER_URL + '/set' + query;
         
-        return handleRequest(requestUrl, this);
+        handleRequest.call(this, requestUrl);
     }
 };
 
-function handleRequest (url, context) {
-    return request(url, (error, response, body) => {
+function handleRequest (url) {
+    request(url, (error, response, body) => {
         console.log(body);
     
         if (!error && response.statusCode === 200) {
-            context.emit(':tell', body);
+            this.emit(':tell', body);
 
         } else {
             console.log('Request error: ', err);
-            context.emit(':tell', 'Something went wrong. Please try again later.');
+            this.emit(':tell', 'Something went wrong. Please try again later.');
         }
     });
 };
