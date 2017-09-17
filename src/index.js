@@ -57,10 +57,17 @@ const handlers = {
 
 function handleRequest (url) {
     request(url, (error, response, body) => {
-        console.log(body);
+        const data = JSON.parse(body);
+        const mode = data.settings.mode;
+        const speed = data.settings.speed;
+        const temp = data.settings.temp;
+
+        const outputSpeech = data.isOn ? 
+            `Your unit is set to ${mode} on ${speed}, at ${temp} degrees.` : 
+            'Your unit is off';
     
         if (!error && response.statusCode === 200) {
-            this.emit(':tell', body);
+            this.emit(':tell', outputSpeech);
 
         } else {
             console.log('Request error: ', err);
