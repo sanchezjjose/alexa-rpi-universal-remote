@@ -6,7 +6,11 @@
     },
     {
       "name": "AMAZON.HelpIntent",
-      "samples": []
+      "samples": [
+        "Set the heat",
+        "Set cool mode",
+        "Set cool on high and sixty eight degrees"
+      ]
     },
     {
       "name": "AMAZON.StopIntent",
@@ -31,6 +35,7 @@
     {
       "name": "SetTemperatureIntent",
       "samples": [
+        "Set the {mode}",
         "Set {mode}",
         "Set {mode} mode",
         "Set {mode} mode on {speed}",
@@ -93,9 +98,16 @@
       "name": "TurnOffIntent",
       "samples": [
         "Turn off unit",
+        "Turn off the {mode}",
         "Turn off"
       ],
-      "slots": []
+      "slots": [
+        {
+          "name": "mode",
+          "type": "MODE",
+          "samples": []
+        }
+      ]
     },
     {
       "name": "TurnOnIntent",
@@ -103,6 +115,7 @@
         "Turn on",
         "Turn on and set temperature to {temperature} degrees",
         "Turn on and set temperature to {temperature} degrees on {speed}",
+        "Turn on the {mode}",
         "Turn on {mode}",
         "Turn on {mode} mode",
         "Turn on {mode} mode at {temperature} degrees",
