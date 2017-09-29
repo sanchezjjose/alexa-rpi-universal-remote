@@ -30,9 +30,9 @@ const handlers = {
         console.log('Called TurnOnIntent');
 
         const slots = this.event.request.intent.slots;
-        const mode = slots.mode.value || 'dry';
-        const speed = slots.speed.value || 'auto';
-        const temp = slots.temperature.value || '72';
+        const mode  = slots.mode.value        || 'dry';
+        const speed = slots.speed.value       || 'auto';
+        const temp  = slots.temperature.value || '72';
         
         const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
         const requestUrl = SERVER_URL + '/on' + query;
@@ -44,26 +44,67 @@ const handlers = {
         console.log('Called SetTemperatureIntent');
 
         const slots = this.event.request.intent.slots;
-        const mode = slots.mode.value || 'dry';
-        const speed = slots.speed.value || 'auto';
-        const temp = slots.temperature.value || '72';
+        const mode  = slots.mode.value        || 'dry';
+        const speed = slots.speed.value       || 'auto';
+        const temp  = slots.temperature.value || '72';
 
         const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
         const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl);
+    },
+
+    'ComfortableIntent': function () {
+        console.log('Called ComfortableIntent');
+        
+        const message = 'Okay, making the room comfortable for you.';
+        const query = `?mode=dry&temp=68&speed=auto`;
+        const requestUrl = SERVER_URL + '/on' + query;
+        
+        handleRequest.call(this, requestUrl);
+    },
+
+    'CoolIntent': function () {
+        console.log('Called CoolIntent');
+
+        const message = 'Okay, lets cool it down real smooth.';
+        const query = `?mode=cool&temp=68&speed=high`;
+        const requestUrl = SERVER_URL + '/on' + query;
+        
+        handleRequest.call(this, requestUrl, message);
+    },
+
+    'WarmIntent': function () {
+        console.log('Called WarmIntent');
+
+        const message = 'Okay, time to get cozy. Making it warm for you.';
+        const query = `?mode=heat&temp=68&speed=auto`;
+        const requestUrl = SERVER_URL + '/on' + query;
+        
+        handleRequest.call(this, requestUrl);
+    },
+
+    'HotIntent': function () {
+        console.log('Called HotIntent');
+
+        const message = 'Okay, lets make it nice and toasty.';
+        const query = `?mode=heat&temp=76&speed=high`;
+        const requestUrl = SERVER_URL + '/on' + query;
+        
+        handleRequest.call(this, requestUrl);
     }
 };
 
-function handleRequest (url) {
+function handleRequest (url, msg) {
     request(url, (error, response, body) => {
         const data = JSON.parse(body);
         const mode = data.settings.mode;
         const speed = data.settings.speed;
         const temp = data.settings.temp;
+        const message = msg || '';
 
         const outputSpeech = data.isOn ? 
-            `Your unit is set to ${mode} on ${speed}, at ${temp} degrees.` : 
+            `${message}. Your unit is set to ${mode} on ${speed}, at ${temp} degrees.` : 
             'Your unit is off';
     
         if (!error && response.statusCode === 200) {
