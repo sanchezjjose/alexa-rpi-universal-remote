@@ -35,28 +35,28 @@
     {
       "name": "ComfortableIntent",
       "samples": [
-        "To make it comfortable"
+        "Make it comfortable"
       ],
       "slots": []
     },
     {
       "name": "CoolIntent",
       "samples": [
-        "To make it cool"
+        "Make it cool"
       ],
       "slots": []
     },
     {
       "name": "HotIntent",
       "samples": [
-        "To make it hot"
+        "Make it hot"
       ],
       "slots": []
     },
     {
       "name": "WarmIntent",
       "samples": [
-        "To make it warm"
+        "Make it warm"
       ],
       "slots": []
     },

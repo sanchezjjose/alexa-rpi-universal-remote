@@ -59,9 +59,9 @@ const handlers = {
         
         const message = 'Okay, making the room comfortable for you.';
         const query = `?mode=dry&temp=68&speed=auto`;
-        const requestUrl = SERVER_URL + '/on' + query;
+        const requestUrl = SERVER_URL + '/set' + query;
         
-        handleRequest.call(this, requestUrl);
+        handleRequest.call(this, requestUrl, message);
     },
 
     'CoolIntent': function () {
@@ -69,7 +69,7 @@ const handlers = {
 
         const message = 'Okay, lets cool it down real smooth.';
         const query = `?mode=cool&temp=68&speed=high`;
-        const requestUrl = SERVER_URL + '/on' + query;
+        const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl, message);
     },
@@ -79,9 +79,9 @@ const handlers = {
 
         const message = 'Okay, time to get cozy. Making it warm for you.';
         const query = `?mode=heat&temp=68&speed=auto`;
-        const requestUrl = SERVER_URL + '/on' + query;
+        const requestUrl = SERVER_URL + '/set' + query;
         
-        handleRequest.call(this, requestUrl);
+        handleRequest.call(this, requestUrl, message);
     },
 
     'HotIntent': function () {
@@ -89,9 +89,9 @@ const handlers = {
 
         const message = 'Okay, lets make it nice and toasty.';
         const query = `?mode=heat&temp=76&speed=high`;
-        const requestUrl = SERVER_URL + '/on' + query;
+        const requestUrl = SERVER_URL + '/set' + query;
         
-        handleRequest.call(this, requestUrl);
+        handleRequest.call(this, requestUrl, message);
     }
 };
 
@@ -101,7 +101,7 @@ function handleRequest (url, msg) {
         const mode = data.settings.mode;
         const speed = data.settings.speed;
         const temp = data.settings.temp;
-        const message = msg || '';
+        const message = msg || 'Ok';
 
         const outputSpeech = data.isOn ? 
             `${message}. Your unit is set to ${mode} on ${speed}, at ${temp} degrees.` : 
