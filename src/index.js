@@ -14,11 +14,36 @@ exports.handler = (event, context, callback) => {
     alexa.execute();
 };
 
+// Initialize with default values.
+const currentSettings = {
+    mode:  'dry',
+    speed: 'auto',
+    temp:  '70'
+};
+
+function updateCurrentSettings (mode, speed, temp) {
+    currentSettings = {
+        mode: mode,
+        speed: speed,
+        temp: temp
+    };
+};
+
+function getQueryString (mode, speed, temp) {
+    const mode  = mode  || currentSettings.mode;
+    const speed = speed || currentSettings.speed;
+    const temp  = temp  || currentSettings.temp;
+
+    updateCurrentSettings(mode, speed, temp);
+
+    return `?mode=${mode}&temp=${temp}&speed=${speed}`;
+};
+
 const handlers = {
 
     'GetStatusIntent': function () {
         console.log('Called GetStatusIntent');
-        handleRequest.call(this, SERVER_URL + '/status');
+        handleRequest.call(this, SERVER_URL + '/status', 'Currently');
     },
 
     'TurnOffIntent': function () {
@@ -30,11 +55,11 @@ const handlers = {
         console.log('Called TurnOnIntent');
 
         const slots = this.event.request.intent.slots;
-        const mode  = slots.mode.value        || 'dry';
-        const speed = slots.speed.value       || 'auto';
-        const temp  = slots.temperature.value || '72';
-        
-        const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
+        const mode = slots.mode.value;
+        const speed = slots.speed.value;
+        const temp = slots.temperature.value;
+
+        const query = getQueryString(mode, speed, temp);
         const requestUrl = SERVER_URL + '/on' + query;
         
         handleRequest.call(this, requestUrl);
@@ -44,11 +69,11 @@ const handlers = {
         console.log('Called SetTemperatureIntent');
 
         const slots = this.event.request.intent.slots;
-        const mode  = slots.mode.value        || 'dry';
-        const speed = slots.speed.value       || 'auto';
-        const temp  = slots.temperature.value || '72';
+        const mode = slots.mode.value;
+        const speed = slots.speed.value;
+        const temp = slots.temperature.value;
 
-        const query = `?mode=${mode}&temp=${temp}&speed=${speed}`;
+        const query = getQueryString(mode, speed, temp);
         const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl);
@@ -57,8 +82,12 @@ const handlers = {
     'ComfortableIntent': function () {
         console.log('Called ComfortableIntent');
         
-        const message = 'Okay, making the room comfortable for you.';
-        const query = `?mode=dry&temp=68&speed=auto`;
+        const mode = 'dry';
+        const temp = '68';
+        const speed = 'auto';
+
+        const message = 'Okay, making the room comfortable for you';
+        const query = getQueryString(mode, speed, temp);
         const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl, message);
@@ -67,8 +96,12 @@ const handlers = {
     'CoolIntent': function () {
         console.log('Called CoolIntent');
 
-        const message = 'Okay, lets cool it down real smooth.';
-        const query = `?mode=cool&temp=68&speed=high`;
+        const mode = 'cool';
+        const temp = '68';
+        const speed = 'high';
+
+        const message = 'Okay, lets cool it down real smooth';
+        const query = getQueryString(mode, speed, temp);
         const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl, message);
@@ -77,8 +110,12 @@ const handlers = {
     'WarmIntent': function () {
         console.log('Called WarmIntent');
 
-        const message = 'Okay, time to get cozy. Making it warm for you.';
-        const query = `?mode=heat&temp=68&speed=auto`;
+        const mode = 'heat';
+        const temp = '68';
+        const speed = 'auto';
+
+        const message = 'Okay, time to get cozy. Making it warm for you';
+        const query = getQueryString(mode, speed, temp);
         const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl, message);
@@ -87,8 +124,12 @@ const handlers = {
     'HotIntent': function () {
         console.log('Called HotIntent');
 
-        const message = 'Okay, lets make it nice and toasty.';
-        const query = `?mode=heat&temp=76&speed=high`;
+        const mode = 'heat';
+        const temp = '76';
+        const speed = 'high';
+
+        const message = 'Okay, lets make it nice and toasty';
+        const query = getQueryString(mode, speed, temp);
         const requestUrl = SERVER_URL + '/set' + query;
         
         handleRequest.call(this, requestUrl, message);
@@ -104,7 +145,7 @@ function handleRequest (url, msg) {
         const message = msg || 'Ok';
 
         const outputSpeech = data.isOn ? 
-            `${message}. Your unit is set to ${mode} on ${speed}, at ${temp} degrees.` : 
+            `${message}, Your unit is set to ${mode} on ${speed}, at ${temp} degrees.` : 
             'Your unit is off';
     
         if (!error && response.statusCode === 200) {
