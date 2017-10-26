@@ -30,11 +30,11 @@ function updateCurrentSettings (mode, speed, temp) {
 };
 
 function getQueryString (mode, speed, temp) {
-    const mode  = mode  || currentSettings.mode;
-    const speed = speed || currentSettings.speed;
-    const temp  = temp  || currentSettings.temp;
+    const _mode  = mode  || currentSettings.mode;
+    const _speed = speed || currentSettings.speed;
+    const _temp  = temp  || currentSettings.temp;
 
-    updateCurrentSettings(mode, speed, temp);
+    updateCurrentSettings(_mode, _speed, _temp);
 
     return `?mode=${mode}&temp=${temp}&speed=${speed}`;
 };
