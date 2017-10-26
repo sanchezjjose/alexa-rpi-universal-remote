@@ -14,12 +14,14 @@ exports.handler = (event, context, callback) => {
     alexa.execute();
 };
 
-function getQueryString (_mode, _speed, _temp) {
-    const mode  = _mode  || 'dry';
-    const speed = _speed || 'auto';
-    const temp  = _temp  || '70';
+function getQueryString (mode, speed, temp) {
+    let queryString = '?';
 
-    return `?mode=${mode}&temp=${temp}&speed=${speed}`;
+    queryString = typeof mode !== 'undefined' ? queryString.concat(`mode=${mode}&`) : '';
+    queryString = typeof speed !== 'undefined' ? queryString.concat(`speed=${speed}&`) : '';
+    queryString = typeof temp !== 'undefined' ? queryString.concat(`temp=${temp}`) : '';
+
+    return queryString;
 };
 
 const handlers = {
