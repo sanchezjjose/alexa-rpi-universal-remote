@@ -122,8 +122,6 @@ const handlers = {
 };
 
 function handleRequest (url, msg) {
-    console.log(`Requesting ${url}`);
-
     request(url, (error, response, body) => {
         const data = JSON.parse(body);
         const mode = data.settings.mode;
