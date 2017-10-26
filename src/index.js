@@ -14,7 +14,11 @@ exports.handler = (event, context, callback) => {
     alexa.execute();
 };
 
-function getQueryString (mode, speed, temp) {
+function getQueryString (_mode, _speed, _temp) {
+    const mode  = _mode  || 'dry';
+    const speed = _speed || 'auto';
+    const temp  = _temp  || '70';
+
     return `?mode=${mode}&temp=${temp}&speed=${speed}`;
 };
 
