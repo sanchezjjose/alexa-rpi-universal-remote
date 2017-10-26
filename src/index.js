@@ -14,28 +14,7 @@ exports.handler = (event, context, callback) => {
     alexa.execute();
 };
 
-// Initialize with default values.
-let currentSettings = {
-    mode:  'dry',
-    speed: 'auto',
-    temp:  '70'
-};
-
-function updateCurrentSettings (mode, speed, temp) {
-    currentSettings = {
-        mode: mode,
-        speed: speed,
-        temp: temp
-    };
-};
-
-function getQueryString (_mode, _speed, _temp) {
-    const mode  = _mode  || currentSettings.mode;
-    const speed = _speed || currentSettings.speed;
-    const temp  = _temp  || currentSettings.temp;
-
-    updateCurrentSettings(mode, speed, temp);
-
+function getQueryString (mode, speed, temp) {
     return `?mode=${mode}&temp=${temp}&speed=${speed}`;
 };
 
