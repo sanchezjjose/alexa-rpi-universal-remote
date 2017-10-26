@@ -17,9 +17,9 @@ exports.handler = (event, context, callback) => {
 function getQueryString (mode, speed, temp) {
     let queryString = '?';
 
-    queryString = typeof mode !== 'undefined' ? queryString.concat(`mode=${mode}&`) : '';
-    queryString = typeof speed !== 'undefined' ? queryString.concat(`speed=${speed}&`) : '';
-    queryString = typeof temp !== 'undefined' ? queryString.concat(`temp=${temp}`) : '';
+    queryString = typeof mode  !== 'undefined' ? queryString.concat(`mode=${mode}&`)   : queryString;
+    queryString = typeof speed !== 'undefined' ? queryString.concat(`speed=${speed}&`) : queryString;
+    queryString = typeof temp  !== 'undefined' ? queryString.concat(`temp=${temp}`)    : queryString;
 
     return queryString;
 };
@@ -122,6 +122,8 @@ const handlers = {
 };
 
 function handleRequest (url, msg) {
+    console.log(`Requesting ${url}`);
+
     request(url, (error, response, body) => {
         const data = JSON.parse(body);
         const mode = data.settings.mode;
