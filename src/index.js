@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
 };
 
 // Initialize with default values.
-const currentSettings = {
+let currentSettings = {
     mode:  'dry',
     speed: 'auto',
     temp:  '70'
@@ -29,12 +29,12 @@ function updateCurrentSettings (mode, speed, temp) {
     };
 };
 
-function getQueryString (mode, speed, temp) {
-    const _mode  = mode  || currentSettings.mode;
-    const _speed = speed || currentSettings.speed;
-    const _temp  = temp  || currentSettings.temp;
+function getQueryString (_mode, _speed, _temp) {
+    const mode  = _mode  || currentSettings.mode;
+    const speed = _speed || currentSettings.speed;
+    const temp  = _temp  || currentSettings.temp;
 
-    updateCurrentSettings(_mode, _speed, _temp);
+    updateCurrentSettings(mode, speed, temp);
 
     return `?mode=${mode}&temp=${temp}&speed=${speed}`;
 };
